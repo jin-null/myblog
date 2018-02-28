@@ -6,9 +6,9 @@ export default new VueRouter({
     saveScrollPosition: true,
     routes: [
         {
-            name: 'test',
-            path: '/test',
-            component: resolve => void(require(['../components/test.vue'], resolve))
+            name: 'user',
+            path: '/users',
+            component: resolve => void(require(['../components/usermanager/users.vue'], resolve))
         }
     ]
 });
