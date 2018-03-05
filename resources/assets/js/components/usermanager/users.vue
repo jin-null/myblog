@@ -12,19 +12,44 @@
                         width="55">
                 </el-table-column>
                 <el-table-column
-                        label="日期"
+                        prop="id"
+                        label="id"
                         width="120">
-                    <template slot-scope="scope">{{ scope.row.date }}</template>
+                    <template slot-scope="scope">{{ scope.row.id }}</template>
                 </el-table-column>
                 <el-table-column
-                        prop="name"
-                        label="姓名"
+                        prop="avatar"
+                        label="头像"
                         width="120">
+                    <template slot-scope="scope"><img :src="scope.row.avatar" style="height: 52%;width: 52px"/></template>
                 </el-table-column>
                 <el-table-column
-                        prop="address"
-                        label="地址"
-                        show-overflow-tooltip>
+                        prop="username"
+                        label="用户名"
+                        width="120">
+                    <template slot-scope="scope">{{ scope.row.username }}</template>
+                </el-table-column>
+                <el-table-column
+                        prop="email"
+                        label="邮箱"
+                        width="220">
+                    <template slot-scope="scope">{{ scope.row.email }}</template>
+                </el-table-column>
+                <el-table-column
+                        label="操作">
+                    <template slot-scope="scope">
+                        <el-button
+                                type="primary"
+                                size="small"
+                                @click="handleEdit(scope.$index, scope.row)">编辑
+                        </el-button>
+
+                        <!--<el-button-->
+                        <!--size="small"-->
+                        <!--type="danger"-->
+                        <!--@click="handleDelete(scope.$index, scope.row)">删除-->
+                        <!--</el-button>-->
+                    </template>
                 </el-table-column>
             </el-table>
         </el-row>
@@ -48,7 +73,8 @@
         name: "users",
         data() {
             return {
-                tableData: [],
+                tableData: [
+                ],
                 multipleSelection: [],
                 currentPage: 1,
                 pageSize: 10,
@@ -150,7 +176,7 @@
                         that.total = response.data.recordsFiltered;
                         that.prop = response.data.prop;
                         that.order = response.data.order;
-                        // this.tableData = response.data
+                        this.tableData = response.data.data
                     })
             },
         },

@@ -48200,7 +48200,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_element_ui_lib_theme_chalk_index_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_element_ui_lib_theme_chalk_index_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App_vue__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__App_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__router_index_js__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__router_index_js__ = __webpack_require__(215);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -89419,7 +89419,7 @@ var normalizeComponent = __webpack_require__(10)
 /* script */
 var __vue_script__ = __webpack_require__(202)
 /* template */
-var __vue_template__ = __webpack_require__(213)
+var __vue_template__ = __webpack_require__(214)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -89816,7 +89816,7 @@ var normalizeComponent = __webpack_require__(10)
 /* script */
 var __vue_script__ = __webpack_require__(211)
 /* template */
-var __vue_template__ = __webpack_require__(212)
+var __vue_template__ = __webpack_require__(213)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -89889,7 +89889,7 @@ exports = module.exports = __webpack_require__(25)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -89900,12 +89900,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config_menu__ = __webpack_require__(212);
 //
 //
 //
@@ -89921,12 +89916,47 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "sidebar"
+    name: "sidebar",
+    data: function data() {
+        return {
+            menus: __WEBPACK_IMPORTED_MODULE_0__config_menu__["a" /* default */]
+        };
+    }
 });
 
 /***/ }),
 /* 212 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ([{
+    index: '1',
+    label: 'dashboard',
+    icon: 'glyphicon glyphicon-dashboard',
+    uri: '/'
+}, {
+    index: '2',
+    label: '用户管理',
+    icon: 'glyphicon glyphicon-user',
+    uri: '/users'
+}, {
+    index: '3',
+    label: '内容管理',
+    icon: 'glyphicon glyphicon-list-alt',
+    uri: '/articles'
+}, {
+    index: '4',
+    label: '网站管理',
+    icon: 'glyphicon glyphicon-sunglasses',
+    uri: '/sites'
+}]);
+
+/***/ }),
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -89943,48 +89973,25 @@ var render = function() {
       _c(
         "el-menu",
         { attrs: { "default-openeds": ["1", "3"] } },
-        [
-          _c("el-menu-item", { attrs: { index: "1" } }, [
-            _c("span", {
-              staticClass: "glyphicon glyphicon-user",
-              attrs: { "aria-hidden": "true" }
-            }),
-            _vm._v(" "),
-            _c(
-              "span",
-              { attrs: { slot: "title" }, slot: "title" },
-              [
-                _c("router-link", { attrs: { to: "/users" } }, [
-                  _vm._v("用户管理")
-                ])
-              ],
-              1
-            )
-          ]),
-          _vm._v(" "),
-          _c("el-menu-item", { attrs: { index: "2" } }, [
-            _c("span", {
-              staticClass: "glyphicon glyphicon-list-alt",
-              attrs: { "aria-hidden": "true" }
-            }),
-            _vm._v(" "),
-            _c("span", { attrs: { slot: "title" }, slot: "title" }, [
-              _vm._v("内容管理")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("el-menu-item", { attrs: { index: "4" } }, [
-            _c("span", {
-              staticClass: "glyphicon glyphicon-sunglasses",
-              attrs: { "aria-hidden": "true" }
-            }),
-            _vm._v(" "),
-            _c("span", { attrs: { slot: "title" }, slot: "title" }, [
-              _vm._v("网站管理")
-            ])
-          ])
-        ],
-        1
+        _vm._l(_vm.menus, function(menu) {
+          return _c(
+            "li",
+            [
+              _c(
+                "router-link",
+                { attrs: { to: menu.uri } },
+                [
+                  _c("el-menu-item", { attrs: { index: menu.index } }, [
+                    _c("span", { class: menu.icon }),
+                    _vm._v(" " + _vm._s(menu.label) + "\n                ")
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          )
+        })
       )
     ],
     1
@@ -90001,7 +90008,7 @@ if (false) {
 }
 
 /***/ }),
-/* 213 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -90042,13 +90049,13 @@ if (false) {
 }
 
 /***/ }),
-/* 214 */
+/* 215 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(216);
 
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
@@ -90059,13 +90066,13 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
         name: 'user',
         path: '/users',
         component: function component(resolve) {
-            return void __webpack_require__.e/* require */(0).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(216)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+            return void __webpack_require__.e/* require */(0).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(217)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
         }
     }]
 }));
 
 /***/ }),
-/* 215 */
+/* 216 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
