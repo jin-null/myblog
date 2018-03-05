@@ -34,6 +34,9 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin'], function ($router) {
     $router->post('logout', 'LoginController@logout');
     $router->post('getuser', 'Admincontroller@user');
     $router->post('users', 'UserController@users');
+    $router->post('categories', 'CategoriesController@index');
+    $router->post('topics', 'TopicsController@index');
+    $router->post('replies', 'RepliesController@index');
 
 
     Route::get('{path?}', 'Admincontroller@index')->where('path', '[\/\w\.-]*');
