@@ -4,6 +4,8 @@ Vue.use(VueRouter);
 
 export default new VueRouter({
     saveScrollPosition: true,
+    mode:'history',
+    base: "/admin",
     routes: [
         {
             name: 'user',

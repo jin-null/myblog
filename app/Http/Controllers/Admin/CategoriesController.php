@@ -16,10 +16,10 @@ class CategoriesController extends Controller
         $data_info = ['data' => []];
 
 
-        $datas = Category::select('id','name','description')->offset($request->start)->limit($request->length)->get();
+        $datas = Category::select('id', 'name', 'description')->offset($request->start)->limit($request->length)->get();
 
         $data_count = Category::count();
-        $filtercount =$datas->count();
+        $filtercount = $datas->count();
 
         $data_info = ['data' => []];
 
@@ -34,4 +34,13 @@ class CategoriesController extends Controller
         $data_info['error'] = "";
         return new Response($data_info);
     }
+
+
+    public function update(Request $request, $id, Category $category)
+    {
+        $category = $category->findOrfail($id);
+        $category->update($request->all());
+        return new Response(['type' => 'success', 'message' => '更新成功！']);
+    }
+
 }

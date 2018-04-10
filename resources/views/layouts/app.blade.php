@@ -14,6 +14,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @yield('styles')
+    @yield('css')
 </head>
 
 <body>
@@ -31,10 +32,11 @@
 
 
 @if (app()->isLocal())
-    @include('sudosu::user-selector')
+    {{--@include('sudosu::user-selector')--}}
 @endif
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
 @yield('scripts')
+@yield('js')
 </body>
 </html>

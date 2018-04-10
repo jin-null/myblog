@@ -39,14 +39,33 @@
                         </el-button>
 
                         <!--<el-button-->
-                        <!--size="small"-->
-                        <!--type="danger"-->
-                        <!--@click="handleDelete(scope.$index, scope.row)">删除-->
+                                <!--size="small"-->
+                                <!--type="danger"-->
+                                <!--@click="handleDelete(scope.$index, scope.row)">删除-->
                         <!--</el-button>-->
                     </template>
                 </el-table-column>
             </el-table>
         </el-row>
+        <el-row>
+            <el-dialog title="收货地址" :visible.sync="dialogFormVisible" width="30%">
+                <el-form :model="form">
+                    <el-input v-model="form.id" auto-complete="off" hidden></el-input>
+                    <el-form-item label="栏目名称" :label-width="formLabelWidth">
+                        <el-input v-model="form.name" auto-complete="off" :label-width="formLabelWidth"></el-input>
+                    </el-form-item>
+                    <el-form-item label="栏目描述" :label-width="formLabelWidth">
+                        <el-input v-model="form.description" auto-complete="off"
+                                  :label-width="formLabelWidth"></el-input>
+                    </el-form-item>
+                </el-form>
+                <div slot="footer" class="dialog-footer">
+                    <el-button @click="dialogFormVisible = false">取 消</el-button>
+                    <el-button type="primary" @click="editSubmit">确 定</el-button>
+                </div>
+            </el-dialog>
+        </el-row>
+
         <el-row>
             <el-pagination
                     @size-change="handleSizeChange"
@@ -65,15 +84,20 @@
         name: "category",
         data() {
             return {
-                tableData: [
-                ],
+                tableData: [],
                 multipleSelection: [],
+                form: {
+                    id: '',
+                    name: '',
+                    description: '',
+                },
+                formLabelWidth: '120px',
                 currentPage: 1,
                 pageSize: 10,
                 total: 20,
                 prop: 'id',
                 order: 'asc',
-                editPage: '',
+                dialogFormVisible: false,
             };
         },
         methods: {
@@ -106,9 +130,27 @@
                 this.getdatas();
             },
             handleEdit(index, row) {
-                this.editPage = "/notice/" + row.id + "/edit"
-//                console.log(index, row);
+
+                this.dialogFormVisible = true;
+                this.form = {
+                    id: row.id,
+                    name: row.name,
+                    description: row.description,
+                };
+                // console.log(index, row);
 //                console.log(this.editPage);
+            },
+            editSubmit() {
+                console.log(this.form);
+                axios.post('/admin/categories/' + this.form.id, this.form).then((response) => {
+                    console.log(response.data);
+                    this.dialogFormVisible = false;
+                    this.$message({
+                        type: response.data.type,
+                        message: response.data.message,
+                    });
+                    this.getdatas();
+                })
             },
             handleDelete(index, row) {
                 this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
@@ -117,7 +159,7 @@
                     type: 'warning'
                 }).then(() => {
 
-                    axios.delete('/notice/' + row.id, {
+                    axios.delete('/admin/categories/' + row.id, {
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         }

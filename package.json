@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "bootstrap": "^4.0.0",
-    "element-ui": "^2.2.0"
+    "element-ui": "^2.2.0",
+    "datatables": "^1.10.13"
   }
 }

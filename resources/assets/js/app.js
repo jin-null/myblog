@@ -19,6 +19,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 
 // import Test from './components/test.vue'; // 引入Hello 组件
 
-const app = new Vue({
-    el: '#app',
-});
+// const app = new Vue({
+//     el: '#app',
+// });

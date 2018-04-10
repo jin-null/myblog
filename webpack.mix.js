@@ -16,3 +16,10 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .js('resources/assets/js/admin.js', 'public/js')
     .copyDirectory('resources/assets/editor/js', 'public/js')
     .copyDirectory('resources/assets/editor/css', 'public/css');
+
+mix.webpackConfig({
+    output: {
+        publicPath: "/",
+        chunkFilename: 'js/[name].[chunkhash].js'
+    },
+});
