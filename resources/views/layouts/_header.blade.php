@@ -29,6 +29,8 @@
                             href="{{ route('categories.show', 3) }}">问答</a></li>
                 <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 4))) }}"><a
                             href="{{ route('categories.show', 4) }}">公告</a></li>
+                <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 5))) }}"><a
+                            href="{{ route('chatter.home') }}">论坛</a></li>
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="nav justify-content-end">
